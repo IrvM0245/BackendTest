@@ -1,0 +1,44 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (hotels.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Site</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Street</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Latitude</th>
+                        <th scope="col">lenght</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% hotels.forEach((hotel, index) => { %>
+                        <tr>
+                            <th scope="row"><%= hotel.id %></th>
+                            <td></td>
+                            <td><%= hotel.first_name %></td>
+                            <td><%= hotel.last_name %></td>
+                            <td><%= hotel.position %></td>
+                            <td><%= hotel.number %></td>
+                            <td>@<%= hotel.user_name %></td>
+                            <td>
+                                <a href="/edit/<%= hotel.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= hotel.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No hotels found. Go <a href="/add" >here</a> to add hotels.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
