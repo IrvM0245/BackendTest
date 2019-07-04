@@ -1,7 +1,7 @@
 const express = require('express'),
 app = express(),
 bodyParser = require('body-parser');
-app.use(express.json());
+//app.use(express.json());
 
 port = process.env.PORT || 3000;
 
