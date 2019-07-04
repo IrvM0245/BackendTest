@@ -1,13 +1,16 @@
 module.exports = function(app) {
-  var HotelList = require('../controller/HotelListController');
+  var RestaurantList = require('../controller/RestaurantListController');
 
-  // HotelList Routes
-  app.route('/hotels')
-    .get(HotelList.list_all_hotels)
-    .post(HotelList.create_a_hotel);
+  // RestaurantList Routes
+  app.route('/restaurants')
+    .get(RestaurantList.list_all_restaurants)
+    .post(RestaurantList.create_a_restaurant);
 
-   app.route('/hotels/:hotelId')
-    .get(HotelList.read_a_hotel)
-    .put(HotelList.update_a_hotel)
-    .delete(HotelList.delete_a_hotel);
-    };
+   app.route('/restaurants/:restaurantId')
+    .get(RestaurantList.read_a_restaurant)
+    .put(RestaurantList.update_a_restaurant)
+    .delete(RestaurantList.delete_a_restaurant);
+
+    app.route('/restaurants/statistics?latitude=x&longitude=y&radius=z')
+     .get(RestaurantList.read_a_restaurant)
+  };

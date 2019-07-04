@@ -1,60 +1,60 @@
-var Hotel = require('../model/appModel.js');
+var Restaurant = require('../model/appModel.js');
 
-exports.list_all_hotels = function(req, res) {
-  Hotel.getAllHotel(function(err, hotel) {
+exports.list_all_restaurants = function(req, res) {
+  Restaurant.getAllRestaurant(function(err, restaurant) {
 
     console.log('controller')
     if (err)
       res.send(err);
-      console.log('res', hotel);
-    res.send(hotel);
+      console.log('res', restaurant);
+    res.send(restaurant);
   });
 };
 
-exports.create_a_hotel = function(req, res) {
-  var new_hotel = new Hotel(req.body);
+exports.create_a_restaurant = function(req, res) {
+  var new_restaurant = new Restaurant(req.body);
 
   //handles null error
-   if( !new_hotel.id || !new_hotel.rating || !new_hotel.name || !new_hotel.site || !new_hotel.email
-       || !new_hotel.phone || !new_hotel.street || !new_hotel.city || !new_hotel.state || !new_hotel.lat || !new_hotel.lng){
+   if( !new_restaurant.id || !new_restaurant.rating || !new_restaurant.name || !new_restaurant.site || !new_restaurant.email
+       || !new_restaurant.phone || !new_restaurant.street || !new_restaurant.city || !new_restaurant.state || !new_restaurant.lat || !new_restaurant.lng){
 
-            res.status(400).send({ error:true, message: 'Please provide hotel data' });
+            res.status(400).send({ error:true, message: 'Please provide restaurant data' });
 
         }
 else{
 
-  Hotel.createHotel(new_hotel, function(err, hotel) {
+  Restaurant.createRestaurant(new_restaurant, function(err, restaurant) {
 
     if (err)
       res.send(err);
-    res.json(hotel);
+    res.json(restaurant);
   });
 }
 };
 
 
-exports.read_a_hotel = function(req, res) {
-  Hotel.getHotelById(req.params.hotelId, function(err, hotel) {
+exports.read_a_restaurant = function(req, res) {
+  Restaurant.getRestaurantById(req.params.restaurantId, function(err, restaurant) {
     if (err)
       res.send(err);
-    res.json(hotel);
+    res.json(restaurant);
   });
 };
 
 
-exports.update_a_hotel = function(req, res) {
-  Hotel.updateById(req.params.hotelId, new Hotel(req.body), function(err, hotel) {
+exports.update_a_restaurant = function(req, res) {
+  Restaurant.updateById(req.params.restaurantId, new Restaurant(req.body), function(err, restaurant) {
     if (err)
       res.send(err);
-    res.json(hotel);
+    res.json(restaurant);
   });
 };
 
 
-exports.delete_a_hotel = function(req, res) {
-  Hotel.remove( req.params.hotelId, function(err, hotel) {
+exports.delete_a_restaurant = function(req, res) {
+  Restaurant.remove( req.params.restaurantId, function(err, restaurant) {
     if (err)
       res.send(err);
-    res.json({ message: 'Hotel successfully deleted' });
+    res.json({ message: 'Restaurant successfully deleted' });
   });
 };
