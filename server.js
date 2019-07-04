@@ -6,10 +6,10 @@ app.use(express.json());
 port = process.env.PORT || 3000;
 
 
-const mysql = require('mysql');
+//const mysql = require('mysql');
 
 // connection configurations
-const mc = mysql.createConnection({
+/*const mc = mysql.createConnection({
   host     : 'us-cdbr-iron-east-02.cleardb.net',
   user     : 'b54cebd94c131a',
   password : '785b23e4',
@@ -17,7 +17,7 @@ const mc = mysql.createConnection({
 });
 
 // connect to database
-mc.connect();
+mc.connect();*/
 
 app.listen(port);
 
